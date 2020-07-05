@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "practice-23740"
+  },
+  "targets": {
+    "practice-23740": {
+      "hosting": {
+        "practice": [
+          "practice-23740"
+        ]
+      }
+    }
   }
 }
