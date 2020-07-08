@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   user$ = this.authService.afUser$;
-  
+
   constructor(
     private authService: AuthService
   ) {}

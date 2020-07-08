@@ -1,3 +1,6 @@
+import { AuthService } from './../../services/auth.service';
+import { Pet } from './../../interfaces/pet';
+import { PetService } from './../../services/pet.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
@@ -39,15 +42,24 @@ export class CreateComponent implements OnInit {
   }
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private petService: PetService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
   }
 
   submit() {
-    console.log(this.form.value);
-    console.log(this.selectedPetId);
+    const formData = this.form.value;
+    this.petService.createPet({
+      name: formData.name,
+      gender: formData.gender,
+      petImageId: this.selectedPetId,
+      level: 1,
+      exp: 0,
+      trainerId: this.authService.uid
+    });
   }
 
 }
